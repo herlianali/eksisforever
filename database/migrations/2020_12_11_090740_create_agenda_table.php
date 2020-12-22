@@ -20,6 +20,7 @@ class CreateAgendaTable extends Migration
             $table->date('tanggal_posting');
             $table->integer('author');
             $table->timestamps();
+            $table->foreign('author')->references('id')->on('user');
         });
     }
 

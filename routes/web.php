@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\PengumumanController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,25 +59,20 @@ Route::middleware('CekLoginMiddleware')->group(function(){
 		Route::put('/agenda/{id}',		[AgendaController::class, 'update'])->name('agenda.update');
 		Route::get('/agenda/{id}/edit',	[AgendaController::class, 'edit'])->name('agenda.edit');
 		//End block route agenda
-
 		
 		//Block route pengumuman
+		Route::resource('pengumuman', PengumumanController::class);
 		//End block route pengumuman
-		Route::get('/pengumuman', function () {
-			return view('admin.pengumuman.index');
-		});
 
-		Route::get('/inputPengumuman', function () {
-			return view('admin.pengumuman.input');
-		});
+		Route::resource('user', UserController::class);
+		// Route::resource('user', )
+		// Route::get('/user', function () {
+		// 	return view('admin.user.index');
+		// });
 
-		Route::get('/user', function () {
-			return view('admin.user.index');
-		});
-
-		Route::get('/inputUser', function () {
-			return view('admin.user.input');
-		});
+		// Route::get('/inputUser', function () {
+		// 	return view('admin.user.input');
+		// });
 
 	});
 

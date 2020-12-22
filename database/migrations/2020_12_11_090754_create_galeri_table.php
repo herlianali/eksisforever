@@ -14,7 +14,9 @@ class CreateGaleriTable extends Migration
     public function up()
     {
         Schema::create('galeri', function (Blueprint $table) {
-            $table->id();
+            $table->id()->autoIncrement();
+            $table->string('nama_file', 80);
+            $table->string('nama_album', 50);
             $table->timestamps();
         });
     }
