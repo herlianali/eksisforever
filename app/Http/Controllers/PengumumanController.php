@@ -14,7 +14,10 @@ class PengumumanController extends Controller
      */
     public function index()
     {
-        //
+        $pengumumans = Pengumuman::latest()->paginate(10);
+
+        return view('admin.pengumuman.index', compact('pengumumans'))
+                ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**
@@ -24,7 +27,7 @@ class PengumumanController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pengumuman.input');
     }
 
     /**
@@ -35,7 +38,20 @@ class PengumumanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'judulPengumuman' => 'required',
+            'isiPengumuman'   => 'required',
+            'tanggal'         => 'required|date',
+        ]);
+
+        Pengumuman::create([
+            'judul_pengumuman' => $request->judulPengumuman,
+            'isi_pengumuman'   => $request->isiPengumuman,
+            'tanggal_posting'  => $request->tanggal,
+        ]);
+
+        return redirect()->route('pengumuman.index')
+                ->with(['success' => 'Pengumuman berhasil ditambahkan']);
     }
 
     /**
@@ -57,7 +73,7 @@ class PengumumanController extends Controller
      */
     public function edit(Pengumuman $pengumuman)
     {
-        //
+        return view('admin.pengumuman.edit',compact('pengumuman'));
     }
 
     /**
@@ -69,7 +85,21 @@ class PengumumanController extends Controller
      */
     public function update(Request $request, Pengumuman $pengumuman)
     {
-        //
+        // dd($request->all());
+        $request->validate([
+            'judulPengumuman' => 'required',
+            'isiPengumuman'   => 'required',
+            'tanggal'         => 'required|date',
+        ]);
+        $pengumuman->update([
+            'judul_pengumuman' => $request->judulPengumuman,
+            'isi_pengumuman'   => $request->isiPengumuman,
+            'tanggal_posting'  => $request->tanggal,
+        ]);
+
+        return redirect()->route('pengumuman.index')
+                ->with('success', 'Pengumuman berhasil diedit');
+
     }
 
     /**
@@ -80,6 +110,9 @@ class PengumumanController extends Controller
      */
     public function destroy(Pengumuman $pengumuman)
     {
-        //
+        $pengumuman->delete();
+
+        return redirect()->route('pengumuman.index')
+                ->with('successD', 'Pengumuman berhasil dihapus');
     }
 }
