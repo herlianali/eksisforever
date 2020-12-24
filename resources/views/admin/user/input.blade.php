@@ -12,7 +12,8 @@
       <div class="card-body">
         <h4 class="card-title">Input User</h4>
         <p class="card-description"> User baru karang taruna </p>
-        <form class="forms-sample">
+        <form class="forms-sample" action="{{ route('user.store') }}" method="POST">
+          @csrf
           <div class="form-group row">
             <label for="username" class="col-sm-3 col-form-label">Username</label>
             <div class="col-sm-9">
@@ -48,8 +49,8 @@
             <div class="col-sm-9">
               <select class="form-control" id="level" name="level">
                 <option>--Pilih Level User--</option>
-                <option>Admin</option>
-                <option>User</option>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
               </select>
             </div>
           </div>

@@ -2,9 +2,9 @@
 
 @section("title", "Admin Agenda")
 
-@section("cssTambahan")
+@push("cssTambahan")
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/iconfonts/font-awesome/css/font-awesome.min.css') }}">
-@endsection
+@endpush
 
 @section("content")
 	<h3>User Karangtaruna</h3>
@@ -13,12 +13,12 @@
 				<div class="card-body">
 					<div class="d-flex justify-content-between">
 					<h4 class="card-title" style="padding-top: 15px;">Management User Karangtaruna</h4>
-					<a class="btn btn-primary btn-icons btn-rounded align-top" href="{{ url('admin/inputUser') }}">
+					<a class="btn btn-primary btn-icons btn-rounded align-top" href="{{ route('user.create') }}">
 						<i class="fa fa-plus"></i>
 					</a>
 				</div>
 				<br>
-				<table class="table table-bordered table-hover">
+				<table class="table table-bordered table-hover table-responsive ">
 					<thead>
 						<tr>
 							<th>#</th>
@@ -44,8 +44,8 @@
 							<td>{{ $user->level }}</td>
 							<td>{{ $user->nama_lengkap }}</td>
 							<td>
-								<form action=" {{ route('user.destroy', $pengumuman->id) }} " method="POST">
-									<a class="btn btn-primary" href=" {{ route('user.edit', $pengumuman->id) }} ">Edit</a>
+								<form action=" {{ route('user.destroy', $user->id) }} " method="POST">
+									<a class="btn btn-primary" href=" {{ route('user.edit', $user->id) }} ">Edit</a>
 									@csrf
 									@method('DELETE')
 									<button type="submit" class="btn btn-danger" >Hapus</button>
@@ -55,6 +55,7 @@
 						@endforeach
 					</tbody>
 				</table>
+				{!! $users->links() !!}
 			</div>
 		</div>
 	</div>
