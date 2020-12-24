@@ -42,12 +42,14 @@ class PengumumanController extends Controller
             'judulPengumuman' => 'required',
             'isiPengumuman'   => 'required',
             'tanggal'         => 'required|date',
+            'author'          => 'required',
         ]);
 
         Pengumuman::create([
             'judul_pengumuman' => $request->judulPengumuman,
             'isi_pengumuman'   => $request->isiPengumuman,
             'tanggal_posting'  => $request->tanggal,
+            'author'           => $request->author,
         ]);
 
         return redirect()->route('pengumuman.index')
@@ -71,9 +73,11 @@ class PengumumanController extends Controller
      * @param  \App\Models\Pengumuman  $pengumuman
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pengumuman $pengumuman)
+    public function edit($id)
     {
-        return view('admin.pengumuman.edit',compact('pengumuman'));
+        $pengumumans = Pengumuman::where('id_pengumuman', $id)
+                        ->get();
+        return view('admin.pengumuman.edit',compact('pengumumans'));
     }
 
     /**
@@ -83,19 +87,21 @@ class PengumumanController extends Controller
      * @param  \App\Models\Pengumuman  $pengumuman
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pengumuman $pengumuman)
+    public function update(Request $request, $id)
     {
-        // dd($request->all());
         $request->validate([
             'judulPengumuman' => 'required',
             'isiPengumuman'   => 'required',
+            'author'          => 'required',
             'tanggal'         => 'required|date',
         ]);
-        $pengumuman->update([
-            'judul_pengumuman' => $request->judulPengumuman,
-            'isi_pengumuman'   => $request->isiPengumuman,
-            'tanggal_posting'  => $request->tanggal,
-        ]);
+        Pengumuman::where('id_pengumuman', $id)
+                    ->update([
+                        'judul_pengumuman' => $request->judulPengumuman,
+                        'isi_pengumuman'   => $request->isiPengumuman,
+                        'tanggal_posting'  => $request->tanggal,
+                        'author'           => $request->author,
+                    ]);
 
         return redirect()->route('pengumuman.index')
                 ->with('success', 'Pengumuman berhasil diedit');
@@ -108,10 +114,9 @@ class PengumumanController extends Controller
      * @param  \App\Models\Pengumuman  $pengumuman
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pengumuman $pengumuman)
+    public function destroy($id)
     {
-        $pengumuman->delete();
-
+        Pengumuman::where('id_pengumuman',$id)->delete();
         return redirect()->route('pengumuman.index')
                 ->with('successD', 'Pengumuman berhasil dihapus');
     }
