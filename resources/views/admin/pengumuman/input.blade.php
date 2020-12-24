@@ -27,6 +27,12 @@
             </div>
           </div>
           <div class="form-group row">
+            <label for="author" class="col-sm-3 col-form-label">Author</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="author" placeholder="Masukkan nama author" name="author">
+            </div>
+          </div>
+          <div class="form-group row">
             <label for="pengumuman" class="col-sm-3 col-form-label">Tanggal posting</label>
             <div class="col-sm-9">
               <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="Masukkan Tanggal Pengumuman">

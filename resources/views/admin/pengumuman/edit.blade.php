@@ -12,7 +12,9 @@
       <div class="card-body">
         <h4 class="card-title">Edit Pengumuman KT</h4>
         <p class="card-description"> Pengumuman baru yang akan dilakukan karang taruna </p>
-        <form class="forms-sample" method="POST" action=" {{ route('pengumuman.update', $pengumuman->id) }} ">
+
+        @foreach ($pengumumans as $pengumuman)
+        <form class="forms-sample" method="POST" action=" {{ route('pengumuman.update', $pengumuman->id_pengumuman) }} ">
           @csrf
           @method('PUT')
           <div class="form-group row">
@@ -28,6 +30,12 @@
             </div>
           </div>
           <div class="form-group row">
+            <label for="author" class="col-sm-3 col-form-label">Author</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="author" value="{{ $pengumuman->author }}" name="author">
+            </div>
+          </div>
+          <div class="form-group row">
             <label for="pengumuman" class="col-sm-3 col-form-label">Tanggal posting</label>
             <div class="col-sm-9">
               <input type="date" class="form-control" id="tanggal" name="tanggal" value="{{ $pengumuman->tanggal_posting }}">
@@ -36,13 +44,14 @@
 
           <button type="submit" class="btn btn-success mr-2">Kirim</button>
         </form>
+        @endforeach
       </div>
     </div>
 </div>
 @endsection
 
 @push("jsTambahan")
-  {{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+{{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
   <script type="text/javascript">
     $('.datepicker').datepicker();

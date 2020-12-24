@@ -41,6 +41,7 @@
 							<th>Judul Pengumuman</th>
 							<th>Isi Pengumuman</th>
 							<th>Tanggal Posting</th>
+							<th>Author</th>
 							<th>Aksi</th>
 						</tr>
 					</thead>
@@ -51,9 +52,10 @@
 							<td>{{ $pengumuman->judul_pengumuman }}</td>
 							<td>{{ $pengumuman->isi_pengumuman }}</td>
 							<td>{{ $pengumuman->tanggal_posting }}</td>
+							<td>{{ $pengumuman->author }}</td>
 							<td>
-								<form action=" {{ route('pengumuman.destroy', $pengumuman->id) }} " method="POST">
-									<a class="btn btn-primary" href=" {{ route('pengumuman.edit', $pengumuman->id) }} ">Edit</a>
+								<form action=" {{ route('pengumuman.destroy', $pengumuman->id_pengumuman) }} " method="POST">
+									<a class="btn btn-primary" href=" {{ route('pengumuman.edit', $pengumuman->id_pengumuman) }} ">Edit</a>
 									@csrf
 									@method('DELETE')
 									<button type="submit" class="btn btn-danger" >Hapus</button>
