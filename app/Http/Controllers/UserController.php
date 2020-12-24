@@ -14,10 +14,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::latest()->paginate(10);
+        $users = User::latest()->paginate(5);
 
         return view('admin.user.index', compact('users'))
-                ->with('i', (request()->input('page', 1) - 1) * 10);
+                ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -27,7 +27,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.user.input');
     }
 
     /**
@@ -38,7 +38,28 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+            'email'    => 'required|email',
+            'no_telp'  => 'required|numeric',
+            'alamat'   => 'required',
+            'level'    => 'required',
+            'namaL'    => 'required',
+        ]);
+
+        User::create([
+            'username'     => $request->username,
+            'password'     => bcrypt($request->password),
+            'email'        => $request->email, 
+            'no_telp'      => $request->no_telp,
+            'alamat'       => $request->alamat,  
+            'level'        => $request->level,   
+            'nama_lengkap' => $request->namaL,   
+        ]);
+
+        return redirect()->route('user.index')
+                ->with(['success', 'User baru telah berhasil di buat']);
     }
 
     /**
