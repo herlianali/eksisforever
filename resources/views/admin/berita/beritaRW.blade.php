@@ -2,61 +2,144 @@
 
 @section("title", "Berita RW")
 
-@section("cssTambahan")
+@push("cssTambahan")
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/iconfonts/font-awesome/css/font-awesome.min.css') }}">
-@endsection
+	<style>
+		.btn:focus, .btn:active, button:focus, button:active {
+			outline: none !important;
+			box-shadow: none !important;
+		}
+
+		#image-gallery .modal-footer{
+			display: block;
+		}
+
+		.thumb{
+			margin-top: 15px;
+			margin-bottom: 15px;
+		}
+	</style>
+@endpush
 
 @section("content")
+@if ($message = Session::get('success'))
+	<div class="alert alert-success alert-dismissible fade show" role="alert">
+		{{ $message }}
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+@endif
+@if ($message = Session::get('successD'))
+	<div class="alert alert-danger alert-dismissible fade show" role="alert">
+		{{ $message }}
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+@endif
 <div class="col-lg-12 grid-margin stretch-card">
 	<div class="card">
 		<div class="card-body">
 			<div class="d-flex justify-content-between">
 				<h4 class="card-title" style="padding-top: 15px;">Management Berita RW</h4>
-				<a class="btn btn-primary btn-icons btn-rounded" href="{{ url('admin/inputBeritaRW') }}">
+				<a class="btn btn-primary btn-icons btn-rounded align-top" href="{{ route('beritaRW.create') }}">
 					<i class="fa fa-plus"></i>
 				</a>
 			</div>
 			<br>
-			<table class="table table-bordered table-hover">
+			<table class="table table-bordered table-responsive">
 				<thead>
 					<tr>
-						<th>no</th>
-						<th>foto</th>
-						<th>isi</th>
-						<th>tanggal</th>
-						<th>penulis</th>
+						<th>No</th>
+						<th>Judul</th>
+						<th>Isi</th>
+						<th>Tanggal</th>
+						<th>Foto</th>
+						<th>Penulis</th>
+						<th>Status</th>
 						<th>Aksi</th>
 					</tr>
 				</thead>
 				<tbody>
+					@foreach ($RWNews as $news)
 					<tr>
-						<td>1</td>
-						<td>foto 1</td>
-						<td>berita 1 tentang apa aja</td>
-						<td>23 - januari 2022</td>
-						<td>aliyasa</td>
+						<td>{{ ++$i }}</td>
+						<td>{{ $news->judul_berita }}</td>
+						<td>{!! $news->isi_berita !!}</td>
+						<td>{{ $news->tanggal_posting }}</td>
 						<td>
-							<button class="btn btn-danger btn-sm" type="button">
-								<i class="fa fa-trash-o"></i>
-								Hapus
-							</button>
-							<button class="btn btn-success btn-sm" type="button">
-								<i class="fa fa-pencil"></i>
-								Edit
-							</button>
+							<a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""
+							data-image="{{ asset('storage/foto/berita') }}/{{ $news->gambar }}"
+							data-target="#image-gallery">
+								<img class="img-thumbnail"
+									src="{{ asset('storage/foto/berita') }}/{{ $news->gambar }}"
+									alt="gambar berita">
+							</a>
+						</td>
+						<td>{{ $news->author }}</td>
+						<td>
+							@if ($news->status === 'aktif')
+							<form action="{{ route('beritaRW.status', $news->id_berita) }}" method="POST">
+								@method('PUT')
+								@csrf
+								<input type="hidden" value="non aktif" name="status">
+								<button type="submit" class="btn btn-outline-link text-warning" style="font-size: 2em">
+									<i class="fa fa-toggle-on"></i>
+								</button>
+							</form>
+							@else
+								<form action="{{ route('beritaRW.status', $news->id_berita) }}" method="POST">
+									@method('PUT')
+									@csrf
+									<input type="hidden" value="aktif" name="status">
+									<button type="submit" class="btn btn-outline-link text-dark" style="font-size: 2em">
+										<i class="fa fa-toggle-on fa-rotate-180"></i>
+									</button>
+								</form>
+							@endif
+						</td>
+						<td>
+							<form action=" {{ route('beritaRW.destroy', $news->id_berita) }} " method="POST">
+								<a class="btn btn-primary" href=" {{ route('beritaRW.edit', $news->id_berita) }} ">Edit</a>
+								@csrf
+								@method('DELETE')
+								<button type="submit" class="btn btn-danger" >Hapus</button>
+							</form>
 						</td>
 					</tr>
-					<tr>
-						<td>2</td>
-						<td>foto 2</td>
-						<td>berita 2 tentang apa aja ya</td>
-						<td>23 - januari 2023</td>
-						<td>yasaali</td>
-						<td></td>
-					</tr>
+					@endforeach
 				</tbody>
 			</table>
 		</div>
 	</div>
 </div>
+<div class="modal fade" id="image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="image-gallery-title"></h4>
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<img id="image-gallery-image" class="img-responsive col-md-12" src="">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary float-left" id="show-previous-image"><i class="fa fa-arrow-left"></i>
+				</button>
+
+				<button type="button" id="show-next-image" class="btn btn-secondary float-right"><i class="fa fa-arrow-right"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
 @endsection
+@push('jsTambahan')
+	<script src="{{ asset('assets/js/image.js') }}"></script>
+	<script type="text/javascript">
+		$(".alert").show();
+		setTimeout(function(){ $('.alert').hide(); }, 2000);
+	</script>
+@endpush

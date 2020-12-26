@@ -2,9 +2,9 @@
 
 @section("title", "Input Berita KT")
 
-@section("cssTambahan")
+@push("cssTambahan")
   <script src="{{ asset('assets/js/ckeditor.js') }}"></script>
-@endsection
+@endpush
 
 @section("content")
 <div class="col-12 stretch-card">
@@ -12,23 +12,38 @@
       <div class="card-body">
         <h4 class="card-title">Input Berita KT</h4>
         <p class="card-description"> Tulis berita yang baru - baru ini terjadi di karang taruna </p>
-        <form class="forms-sample">
+        <form class="forms-sample" action=" {{ route('berita.storeKT') }} " method="POST" enctype="multipart/form-data">
+          @csrf
+          <input type="hidden" value="berita kartar" name="jenisBerita">
+          <input type="hidden" value="aktif" name="status">
           <div class="form-group row">
-            <label for="temaAgenda" class="col-sm-3 col-form-label">Tema Agenda</label>
+            <label for="temaAgenda" class="col-sm-3 col-form-label">Judul Berita</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="temaAgenda" placeholder="Masukkan tema agenda">
+              <input type="text" class="form-control" id="temaAgenda" placeholder="Masukkan tema agenda" name="judulBerita">
             </div>
           </div>
           <div class="form-group row">
-            <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Password</label>
+            <label for="isiBerita" class="col-sm-3 col-form-label">Isi Berita</label>
             <div class="col-sm-9">
-              <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+              <textarea class="form-control" id="body" placeholder="Masukkan Isi Berita" name="isiBerita"></textarea>
             </div>
           </div>
           <div class="form-group row">
-            <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Isi Berita</label>
+            <label for="gambar" class="col-sm-3 col-form-label">Gambar</label>
             <div class="col-sm-9">
-              <textarea class="form-control" id="body" placeholder="Enter the Description" name="body"></textarea>
+              <input type="file" class="form-control-file" name="gambar" placeholder="Masukkan Tanggal Agenda">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="tanggal" class="col-sm-3 col-form-label">Tanggal</label>
+            <div class="col-sm-9">
+              <input type="date" class="form-control" name="tanggal" placeholder="Masukkan Tanggal Agenda">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="author" class="col-sm-3 col-form-label">Author</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="author" placeholder="Masukkan Nama Author" name="author">
             </div>
           </div>
           <button type="submit" class="btn btn-success mr-2">Kirim</button>
