@@ -40,7 +40,7 @@ class UserController extends Controller
     {
         $request->validate([
             'username' => 'required',
-            'password' => 'required',
+            'password' => 'required|min:8',
             'email'    => 'required|email',
             'no_telp'  => 'required|numeric',
             'alamat'   => 'required',
@@ -79,9 +79,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('admin.user.edit', compact('user'));
     }
 
     /**
@@ -91,9 +91,30 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+            'email'    => 'required|email',
+            'no_telp'  => 'required|numeric',
+            'alamat'   => 'required',
+            'level'    => 'required',
+            'namaL'    => 'required',
+        ]);
+
+        $user->update([
+            'username'     => $request->username,
+            'password'     => bcrypt($request->password),
+            'email'        => $request->email, 
+            'no_telp'      => $request->no_telp,
+            'alamat'       => $request->alamat,  
+            'level'        => $request->level,   
+            'nama_lengkap' => $request->namaL,
+        ]);
+
+        return redirect()->route('user.index')
+                         ->with(['success', 'User telah berhasil di edit']);
     }
 
     /**
@@ -104,6 +125,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return redirect()->route('user.index')
+                         ->with(['successD', 'User telah berhasil di hapus']);
     }
 }

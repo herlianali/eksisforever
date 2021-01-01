@@ -1,6 +1,6 @@
 @extends("template.adminTemplate")
 
-@section("title", "Admin Agenda")
+@section("title", "Admin user Agenda")
 
 @push("cssTambahan")
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/iconfonts/font-awesome/css/font-awesome.min.css') }}">
@@ -8,6 +8,22 @@
 
 @section("content")
 	<h3>User Karangtaruna</h3>
+	@if ($message = Session::get('success'))
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		{{ $message }}
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	@endif
+	@if ($message = Session::get('successD'))
+	<div class="alert alert-danger alert-dismissible fade show" role="alert">
+		{{ $message }}
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	@endif
 	<div class="col-lg-12 grid-margin stretch-card">
 		<div class="card">
 				<div class="card-body">

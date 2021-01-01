@@ -1,13 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\AgendaController;
-use App\Http\Controllers\PengumumanController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\BeritaKTController;
-use App\Http\Controllers\BeritaRWController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +10,16 @@ use App\Http\Controllers\BeritaRWController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\PengumumanController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\BeritaKTController;
+use App\Http\Controllers\BeritaRWController;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\GaleriController;
 
 Route::get('/', function () {
     return view('index');
@@ -55,12 +57,12 @@ Route::middleware('CekLoginMiddleware')->group(function(){
 		Route::put('/beritaRW/{id}', 		[BeritaRWController::class, 'updateRW'])->name('beritaRW.update');
 
 		//Block route agenda
-		Route::get('/agenda', 			[AgendaController::class, 'index'])->name('agenda.index');
-		Route::post('/agenda', 			[AgendaController::class, 'store'])->name('agenda.store');
-		Route::get('/agenda/create',	[AgendaController::class, 'create'])->name('agenda.create');
-		Route::delete('/agenda/{id}',	[AgendaController::class, 'destroy'])->name('agenda.destroy');
-		Route::put('/agenda/{id}',		[AgendaController::class, 'update'])->name('agenda.update');
-		Route::get('/agenda/{id}/edit',	[AgendaController::class, 'edit'])->name('agenda.edit');
+		Route::get('/agenda', 				[AgendaController::class, 'index'])->name('agenda.index');
+		Route::post('/agenda', 				[AgendaController::class, 'store'])->name('agenda.store');
+		Route::get('/agenda/create',		[AgendaController::class, 'create'])->name('agenda.create');
+		Route::delete('/agenda/{id}',		[AgendaController::class, 'destroy'])->name('agenda.destroy');
+		Route::put('/agenda/{id}',			[AgendaController::class, 'update'])->name('agenda.update');
+		Route::get('/agenda/{id}/edit',		[AgendaController::class, 'edit'])->name('agenda.edit');
 		//End block route agenda
 		
 		//Block route pengumuman
@@ -76,6 +78,8 @@ Route::middleware('CekLoginMiddleware')->group(function(){
 		Route::resource('user', UserController::class);
 		// End block route
 
+		Route::resource('galeri', GaleriController::class);
+		Route::resource('produk', ProdukController::class);
 	});
 
 	Route::prefix('user')->group(function() {
