@@ -18,7 +18,7 @@ class CekLoginMiddleware
     {
         // dd(session()->has('login'));
         if (session()->has('login') === false) {
-            return redirect('/admin');
+            return back()->with('pesan', "anda harus login dulu");
         }
         
         return $next($request);

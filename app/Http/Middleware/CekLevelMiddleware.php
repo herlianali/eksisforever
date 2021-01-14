@@ -15,15 +15,13 @@ class CekLevelMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next, $levels)
     {
-        $data = User::where('username', $request->username)->first();
-
-        if ($data->level === 'admin') {
-            return redirect('/admin/dashboard');
-        }elseif ($data->level === 'user') {
-            return redirect('/user/dashboard');
+        if (session('level') === $levels) {
+            return $next($request);
         }
-        return $next($request);
+        return back();
+        // return $next($request);
+
     }
 }

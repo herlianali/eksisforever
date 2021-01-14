@@ -34,7 +34,7 @@
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown">
+            {{-- <li class="nav-item dropdown">
               <a class="nav-link count-indicator" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                 <i class="mdi mdi-bell-outline"></i>
                 <span class="count">7</span>
@@ -73,46 +73,7 @@
                   </div>
                 </a>
               </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-toggle="dropdown">
-                <i class="mdi mdi-email-outline"></i>
-                <span class="count bg-success">3</span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="notificationDropdown">
-                <a class="dropdown-item py-3 border-bottom">
-                  <p class="mb-0 font-weight-medium float-left">You have 4 new notifications </p>
-                  <span class="badge badge-pill badge-primary float-right">View all</span>
-                </a>
-                <a class="dropdown-item preview-item py-3">
-                  <div class="preview-thumbnail">
-                    <i class="mdi mdi-alert m-auto text-primary"></i>
-                  </div>
-                  <div class="preview-item-content">
-                    <h6 class="preview-subject font-weight-normal text-dark mb-1">Application Error</h6>
-                    <p class="font-weight-light small-text mb-0"> Just now </p>
-                  </div>
-                </a>
-                <a class="dropdown-item preview-item py-3">
-                  <div class="preview-thumbnail">
-                    <i class="mdi mdi-settings m-auto text-primary"></i>
-                  </div>
-                  <div class="preview-item-content">
-                    <h6 class="preview-subject font-weight-normal text-dark mb-1">Settings</h6>
-                    <p class="font-weight-light small-text mb-0"> Private message </p>
-                  </div>
-                </a>
-                <a class="dropdown-item preview-item py-3">
-                  <div class="preview-thumbnail">
-                    <i class="mdi mdi-airballoon m-auto text-primary"></i>
-                  </div>
-                  <div class="preview-item-content">
-                    <h6 class="preview-subject font-weight-normal text-dark mb-1">New user registration</h6>
-                    <p class="font-weight-light small-text mb-0"> 2 days ago </p>
-                  </div>
-                </a>
-              </div>
-            </li>
+            </li> --}}
             <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
               <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                 <img class="img-xs rounded-circle" src="{{asset("assets/images/faces/face8.jpg")}}" alt="Profile image"> </a>
@@ -122,11 +83,8 @@
                   <p class="mb-1 mt-3 font-weight-semibold">Allen Moreno</p>
                   <p class="font-weight-light text-muted mb-0">allenmoreno@gmail.com</p>
                 </div>
-                <a class="dropdown-item">My Profile <span class="badge badge-pill badge-danger">1</span><i class="dropdown-item-icon ti-dashboard"></i></a>
                 <a class="dropdown-item">Messages<i class="dropdown-item-icon ti-comment-alt"></i></a>
-                <a class="dropdown-item">Activity<i class="dropdown-item-icon ti-location-arrow"></i></a>
-                <a class="dropdown-item">FAQ<i class="dropdown-item-icon ti-help-alt"></i></a>
-                <a class="dropdown-item" href="{{ route('admin/logout') }}">Sign Out<i class="dropdown-item-icon ti-power-off"></i></a>
+                <a class="dropdown-item" href="{{ route('user/logout') }}">Sign Out<i class="dropdown-item-icon ti-power-off"></i></a>
               </div>
             </li>
           </ul>
@@ -142,26 +100,13 @@
           <ul class="nav">
             <li class="nav-item nav-category">Main Menu</li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url("admin")}}">
+              <a class="nav-link" href="{{url("/")}}">
                 <i class="menu-icon typcn typcn-document-text"></i>
                 <span class="menu-title">Dashboard</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url("admin/agenda")}}">
-                <i class="menu-icon typcn typcn-th-large-outline"></i>
-                <span class="menu-title">Agenda</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{url("admin/pengumuman")}}">
-                <i class="menu-icon typcn typcn-user-outline"></i>
-                <span class="menu-title">Pengumuman</span>
-              </a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#berita" aria-expanded="false" aria-controls="berita">
-                {{--  --}}
                 <i class="menu-icon typcn typcn-shopping-bag"></i>
                 <span class="menu-title">Berita</span>
                 <i class="menu-arrow"></i>
@@ -169,38 +114,44 @@
               <div class="collapse" id="berita">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item">
-                    <a class="nav-link" href="{{url("admin/beritaKT")}}"> Berita KT</a>
+                    <a class="nav-link" href="{{url("beritaKT")}}"> Berita KT</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{{url("admin/beritaRW")}}"> Berita RW</a>
+                    <a class="nav-link" href="{{url("beritaRW")}}"> Berita RW</a>
                   </li>
                 </ul>
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url("admin/user")}}">
+              <a class="nav-link" href="{{url("produk")}}">
                 <i class="menu-icon typcn typcn-bell"></i>
-                <span class="menu-title">Users</span>
+                <span class="menu-title">Produk Desa</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url("admin/album")}}">
-                <i class="menu-icon typcn typcn-user-outline"></i>
-                <span class="menu-title">Album</span>
+              <a class="nav-link" href="{{url("kegiatan")}}">
+                <i class="menu-icon typcn typcn-bell"></i>
+                <span class="menu-title">Kegiatan</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url("admin/forum")}}">
+              <a class="nav-link" href="{{url("galeri")}}">
+                <i class="menu-icon typcn typcn-bell"></i>
+                <span class="menu-title">Galeri</span>
+              </a>
+            </li>
+            {{-- <li class="nav-item">
+              <a class="nav-link" href="{{url("user/user")}}">
+                <i class="menu-icon typcn typcn-bell"></i>
+                <span class="menu-title">Profil Saya</span>
+              </a>
+            </li> --}}
+            {{-- <li class="nav-item">
+              <a class="nav-link" href="{{url("user/forum")}}">
                 <i class="menu-icon typcn typcn-user-outline"></i>
                 <span class="menu-title">Forum</span>
               </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{url("admin/produk")}}">
-                <i class="menu-icon typcn typcn-user-outline"></i>
-                <span class="menu-title">Produk</span>
-              </a>
-            </li>
+            </li> --}}
 
           </ul>
         </nav>

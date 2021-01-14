@@ -45,7 +45,7 @@ class ProdukController extends Controller
         ]);
 
         $file = $request->file('gambar');
-        $nama_file = time()."_".$file->getClientOriginalName();
+        $nama_file = time().".".$file->getClientOriginalExtension();
         $file->storeAs('public/foto/produk',$nama_file);
 
         produk::create([
@@ -79,7 +79,7 @@ class ProdukController extends Controller
      */
     public function edit(Produk $produk)
     {
-        //
+        return view('admin.produk.edit', compact('produk'));
     }
 
     /**
@@ -89,9 +89,30 @@ class ProdukController extends Controller
      * @param  \App\Models\Produk  $produk
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Produk $produk)
+    public function update(Request $request, $id)
     {
-        //
+        $produks = Produk::where('id', $id)
+                        ->first();
+
+        if ($request->has('gambar')) {
+            $file   = $request->file('gambar');
+            $gambar = time().".".$file->getClientOriginalExtension();
+            $file->storeAs('public/foto/produk',$gambar);
+        }else{
+            $gambar = $produks['gambar'];
+        }
+
+        Produk::where('id', $id)
+                ->update([
+                    'nama_produk' => $request->namaProduk,
+                    'harga'       => $request->harga,
+                    'jumlah'      => $request->jumlah,
+                    'keterangan'  => $request->keterangan,
+                    'gambar'      => $gambar
+                ]);
+                
+        return redirect()->route('produk.index')
+                ->with(['success' => 'Produk berhasil ditambahkan']);
     }
 
     /**
@@ -102,6 +123,9 @@ class ProdukController extends Controller
      */
     public function destroy(Produk $produk)
     {
-        //
+        $produk->delete();
+
+        return redirect()->route('produk.index')
+                ->with(['successD' => 'Produk berhasil dihapus']);
     }
 }

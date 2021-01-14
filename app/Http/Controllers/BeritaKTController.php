@@ -41,7 +41,7 @@ class BeritaKTController extends Controller
         ]);
         
         $file = $request->file('gambar');
-        $nama_file = time()."_".$file->getClientOriginalName();
+        $nama_file = time().".".$file->getClientOriginalExtension();
         $file->storeAs('public/foto/berita',$nama_file);
 
         Berita::create([
@@ -71,8 +71,8 @@ class BeritaKTController extends Controller
                         ->first();
 
         if ($request->has('gambar')) {
-            $file = $request->file('gambar');
-            $gambar = time()."_".$file->getClientOriginalName();
+            $file   = $request->file('gambar');
+            $gambar = time().".".$file->getClientOriginalExtension();
             $file->storeAs('public/foto/berita',$gambar);
         }else{
             $gambar = $beritas['gambar'];

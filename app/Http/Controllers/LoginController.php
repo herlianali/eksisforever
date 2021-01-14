@@ -17,10 +17,13 @@ class LoginController extends Controller
     {
 
 		$data = User::where('username', $request->username)->first();
-		
+
     	if ($data != null) {
-    		if (Hash::check($request->password, $data->password)) {
-    			session(['login' => true]);
+    		if (Hash::check($request->password, $data->password) && $data->level === "admin") {
+    			session([
+					'login' => true,
+					'level' => 'admin',
+					]);
     			return redirect('/admin/dashboard');
     		}
     	}
@@ -31,5 +34,33 @@ class LoginController extends Controller
     {
     	$request->session()->flush();
     	return redirect('/admin');
-    }
+	}
+	
+	public function indexUS()
+	{
+		return view('user.login');
+	}
+
+	public function loginUS(Request $request)
+	{
+		$data = User::where('username', $request->username)->first();
+
+		if ($data != null) {
+			if (Hash::check($request->password, $data->password) && $data->level === "user") {
+    			session([
+					'login' => true,
+					'level' => 'user',
+					]);
+    			return redirect('/user/dashboard');
+    		}
+		}
+
+		return redirect('/user')->with('pesan', "Username Atau Password Yang di Inputkan Salah");
+	}
+
+	public function logoutUS(Request $request)
+    {
+    	$request->session()->flush();
+    	return redirect('/user');
+	}
 }

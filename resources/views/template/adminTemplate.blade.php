@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="{{asset("assets/vendors/iconfonts/ionicons/dist/css/ionicons.css")}}">
     <link rel="stylesheet" href="{{asset("assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css")}}">
     <link rel="stylesheet" href="{{asset("assets/vendors/css/vendor.bundle.base.css")}}">
+    <link rel="stylesheet" href="{{asset("assets/vendors/css/vendor.bundle.base.css")}}">
+    <link rel="stylesheet" href="{{asset("lending_page/fontawesome/css/all.css")}}">
     @stack('cssTambahan')
     <!-- inject:css -->
     <link rel="stylesheet" href="{{asset("assets/css/shared/style.css")}}">
@@ -17,7 +19,7 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{asset("assets/css/demo_1/style.css")}}">
     <!-- End Layout styles -->
-    <link rel="shortcut icon" href="{{asset("lending_page/assets/img/Logo-Karang-Taruna-300x293.png")}}" />
+    <link rel="shortcut icon" href="{{asset("Logokartar.png")}}" />
     
   </head>
   <body>
@@ -74,45 +76,6 @@
                 </a>
               </div>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-toggle="dropdown">
-                <i class="mdi mdi-email-outline"></i>
-                <span class="count bg-success">3</span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="notificationDropdown">
-                <a class="dropdown-item py-3 border-bottom">
-                  <p class="mb-0 font-weight-medium float-left">You have 4 new notifications </p>
-                  <span class="badge badge-pill badge-primary float-right">View all</span>
-                </a>
-                <a class="dropdown-item preview-item py-3">
-                  <div class="preview-thumbnail">
-                    <i class="mdi mdi-alert m-auto text-primary"></i>
-                  </div>
-                  <div class="preview-item-content">
-                    <h6 class="preview-subject font-weight-normal text-dark mb-1">Application Error</h6>
-                    <p class="font-weight-light small-text mb-0"> Just now </p>
-                  </div>
-                </a>
-                <a class="dropdown-item preview-item py-3">
-                  <div class="preview-thumbnail">
-                    <i class="mdi mdi-settings m-auto text-primary"></i>
-                  </div>
-                  <div class="preview-item-content">
-                    <h6 class="preview-subject font-weight-normal text-dark mb-1">Settings</h6>
-                    <p class="font-weight-light small-text mb-0"> Private message </p>
-                  </div>
-                </a>
-                <a class="dropdown-item preview-item py-3">
-                  <div class="preview-thumbnail">
-                    <i class="mdi mdi-airballoon m-auto text-primary"></i>
-                  </div>
-                  <div class="preview-item-content">
-                    <h6 class="preview-subject font-weight-normal text-dark mb-1">New user registration</h6>
-                    <p class="font-weight-light small-text mb-0"> 2 days ago </p>
-                  </div>
-                </a>
-              </div>
-            </li>
             <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
               <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                 <img class="img-xs rounded-circle" src="{{asset("assets/images/faces/face8.jpg")}}" alt="Profile image"> </a>
@@ -123,9 +86,6 @@
                   <p class="font-weight-light text-muted mb-0">allenmoreno@gmail.com</p>
                 </div>
                 <a class="dropdown-item">My Profile <span class="badge badge-pill badge-danger">1</span><i class="dropdown-item-icon ti-dashboard"></i></a>
-                <a class="dropdown-item">Messages<i class="dropdown-item-icon ti-comment-alt"></i></a>
-                <a class="dropdown-item">Activity<i class="dropdown-item-icon ti-location-arrow"></i></a>
-                <a class="dropdown-item">FAQ<i class="dropdown-item-icon ti-help-alt"></i></a>
                 <a class="dropdown-item" href="{{ route('admin/logout') }}">Sign Out<i class="dropdown-item-icon ti-power-off"></i></a>
               </div>
             </li>
@@ -143,26 +103,26 @@
             <li class="nav-item nav-category">Main Menu</li>
             <li class="nav-item">
               <a class="nav-link" href="{{url("admin")}}">
-                <i class="menu-icon typcn typcn-document-text"></i>
                 <span class="menu-title">Dashboard</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{url("admin/agenda")}}">
-                <i class="menu-icon typcn typcn-th-large-outline"></i>
                 <span class="menu-title">Agenda</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{url("admin/pengumuman")}}">
-                <i class="menu-icon typcn typcn-user-outline"></i>
                 <span class="menu-title">Pengumuman</span>
               </a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="{{url("admin/statis")}}">
+                <span class="menu-title">Data static</span>
+              </a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#berita" aria-expanded="false" aria-controls="berita">
-                {{--  --}}
-                <i class="menu-icon typcn typcn-shopping-bag"></i>
                 <span class="menu-title">Berita</span>
                 <i class="menu-arrow"></i>
               </a>
@@ -179,25 +139,26 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{url("admin/user")}}">
-                <i class="menu-icon typcn typcn-bell"></i>
                 <span class="menu-title">Users</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url("admin/album")}}">
-                <i class="menu-icon typcn typcn-user-outline"></i>
-                <span class="menu-title">Album</span>
+              <a class="nav-link" href="{{url("admin/galeri")}}">
+                <span class="menu-title">Galeri</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url("admin/kegiatan")}}">
+                <span class="menu-title">Kegiatan</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{url("admin/forum")}}">
-                <i class="menu-icon typcn typcn-user-outline"></i>
                 <span class="menu-title">Forum</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{url("admin/produk")}}">
-                <i class="menu-icon typcn typcn-user-outline"></i>
                 <span class="menu-title">Produk</span>
               </a>
             </li>
@@ -214,8 +175,8 @@
           <!-- partial:../../partials/_footer.html -->
           <footer class="footer">
             <div class="container-fluid clearfix">
-              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
-              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates</a> from Bootstrapdash.com</span>
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © cyberLAB.com 2020</span>
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> <a href="https://umsida.ac.id/cyberLAB" target="_blank">Klik to order web</a> from cyberLAB.com</span>
             </div>
           </footer>
           <!-- partial -->

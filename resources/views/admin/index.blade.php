@@ -28,7 +28,7 @@
               	<br>
             	<div class="row">
 	              	<div class="col-lg-6 text-center">
-	              		<img src="{{ asset('lending_page/assets/img/Logo-Karang-Taruna-300x293.png') }}" width="45%">
+	              		<img src="{{ asset('Logokartar.png') }}" width="45%">
 	              		<h1>Login Admin Web Karangtaruna Desa Maguwoharjo</h1>
 	              	</div>
 	              	<div class="col-lg-1"></div>

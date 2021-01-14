@@ -105,7 +105,6 @@ class PengumumanController extends Controller
 
         return redirect()->route('pengumuman.index')
                 ->with('success', 'Pengumuman berhasil diedit');
-
     }
 
     /**
