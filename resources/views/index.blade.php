@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="{{ asset('lending_page/css/bootstrap.min.css') }} " integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('lending_page/css/style.css') }} ">
-    <link rel="stylesheet" href="{{ asset('lending_page/fontawesome/css/all.css') }} ">
+    <link rel="stylesheet" href="{{ asset('public/lending_page/css/bootstrap.min.css') }} " integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('public/lending_page/css/style.css') }} ">
+    <link rel="stylesheet" href="{{ asset('public/lending_page/fontawesome/css/all.css') }} ">
 </head>
 
 
@@ -15,7 +15,7 @@
     <header class="fixed-top page-header">
       <div class="container-fluid container-fluid-max">
         <nav id="navbar" class="navbar navbar-expand-lg navbar-dark">
-          <img src=" {{ asset('Logokartar.png') }} " alt="" class="navbar-brand" style="width: 45px;">
+          <img src=" {{ asset('public/Logokartar.png') }} " alt="" class="navbar-brand" style="width: 45px;">
           <a class="navbar-brand" href="#home">Eksis Forever</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -57,7 +57,7 @@
     </header>
   
     <main>
-      <section id="home" class="d-flex align-items-center position-relative vh-100 cover hero" style="background-image:url({{ asset('background.jpg') }});">
+      <section id="home" class="d-flex align-items-center position-relative vh-100 cover hero" style="background-image:url({{ asset('public/background.jpg') }});">
         <div class="container-fluid container-fluid-max">
           <div class="row">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -78,7 +78,7 @@
               <h2 class="text-red">Tentang Karang Taruna</h2>
             </div>
             <div class="px-4">
-              <p>{{ $statis->about_web }}}</p>
+              <p>{{ $statis->about_web }}</p>
             </div>
           </div>
         </div>
@@ -95,7 +95,7 @@
               @foreach ($produks as $produk)
                   
               <div class="card col-12 col-sm-5 col-lg-3 m-2 p-1" style="width: 50%">
-                <img src="{{ asset('storage/foto/produk') }}/{{ $produk->gambar}}" class="card-img-top" alt="" style="width: 100%; height: 15vw; object-fit: cover;">
+                <img src="{{ asset('public/storage/foto/produk') }}/{{ $produk->gambar}}" class="card-img-top" alt="" style="width: 100%; height: 15vw; object-fit: cover;">
                 <div class="card-body">
                   <h5 class="card-title">{{ $produk->nama_produk }}</h5>
                   <p class="card-text">Harga : {{ $produk->harga }}</p>
@@ -123,10 +123,10 @@
             </div>
           </div>
           <div class="col-12 col-md-6 order-0 order-md-1">
-            <div class="vh-100 cover" style="background-image: url({{ asset('storage/foto/kegiatan') }}/{{ $kegiatan1->gambar }});"></div>
+            <div class="vh-100 cover" style="background-image: url({{ asset('public/storage/foto/kegiatan') }}/{{ $kegiatan1->gambar }});"></div>
           </div>
           <div class="col-12 col-md-6 order-2">
-            <div class="vh-100 cover" style="background-image: url({{ asset('storage/foto/kegiatan') }}/{{ $kegiatan2->gambar }});"></div>
+            <div class="vh-100 cover" style="background-image: url({{ asset('public/storage/foto/kegiatan') }}/{{ $kegiatan2->gambar }});"></div>
           </div>
           <div class="col-12 col-md-6 d-flex align-items-center order-3">
             <div class="p-15">
@@ -153,7 +153,7 @@
               <div class="col-12 col-sm-6 col-md-4">
                 <a href="" class="text-white">
                   <figure class="position-relative overflow-hidden">
-                    <img class="img-fluid" src="{{ asset('storage/foto/galeri') }}/{{ $galeri->nama_file }}" alt="Vienna">
+                    <img class="img-fluid" src="{{ asset('public/storage/foto/galeri') }}/{{ $galeri->nama_file }}" alt="Vienna">
                     <figcaption class="d-flex align-items-center justify-content-center position-absolute">
                       <h3>{{ $galeri->nama_kegiatan }}</h3>
                     </figcaption>
@@ -221,7 +221,7 @@
     </footer>
   
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
-    <script src="{{ asset('lending_page/js/style.js') }}"></script>
-    <script src="{{ asset('lending_page/js/bootstrap.bundle.min.js') }}" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="{{ asset('public/lending_page/js/style.js') }}"></script>
+    <script src="{{ asset('public/lending_page/js/bootstrap.bundle.min.js') }}" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </body>
 </html>

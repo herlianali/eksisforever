@@ -6,20 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Eksisforever | @yield("title")</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="{{asset("assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css")}}">
-    <link rel="stylesheet" href="{{asset("assets/vendors/iconfonts/ionicons/dist/css/ionicons.css")}}">
-    <link rel="stylesheet" href="{{asset("assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css")}}">
-    <link rel="stylesheet" href="{{asset("assets/vendors/css/vendor.bundle.base.css")}}">
-    <link rel="stylesheet" href="{{asset("assets/vendors/css/vendor.bundle.base.css")}}">
-    <link rel="stylesheet" href="{{asset("lending_page/fontawesome/css/all.css")}}">
+    <link rel="stylesheet" href="{{asset("public/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css")}}">
+    <link rel="stylesheet" href="{{asset("public/assets/vendors/iconfonts/ionicons/dist/css/ionicons.css")}}">
+    <link rel="stylesheet" href="{{asset("public/assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css")}}">
+    <link rel="stylesheet" href="{{asset("public/assets/vendors/css/vendor.bundle.base.css")}}">
+    <link rel="stylesheet" href="{{asset("public/assets/vendors/css/vendor.bundle.base.css")}}">
+    <link rel="stylesheet" href="{{asset("public/lending_page/fontawesome/css/all.css")}}">
     @stack('cssTambahan')
     <!-- inject:css -->
-    <link rel="stylesheet" href="{{asset("assets/css/shared/style.css")}}">
+    <link rel="stylesheet" href="{{asset("public/assets/css/shared/style.css")}}">
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="{{asset("assets/css/demo_1/style.css")}}">
+    <link rel="stylesheet" href="{{asset("public/assets/css/demo_1/style.css")}}">
     <!-- End Layout styles -->
-    <link rel="shortcut icon" href="{{asset("Logokartar.png")}}" />
+    <link rel="shortcut icon" href="{{asset("public/Logokartar.png")}}" />
     
   </head>
   <body>
@@ -32,7 +32,7 @@
             Eksisforever
           </a>
           <a class="navbar-brand brand-logo-mini" href="../../index.html">
-            <img src="{{asset("lending_page/assets/img/Logo-Karang-Taruna-300x293.png")}}" alt="logo" /> </a>
+            <img src="{{asset("public/lending_page/assets/img/Logo-Karang-Taruna-300x293.png")}}" alt="logo" /> </a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center">
           <ul class="navbar-nav ml-auto">
@@ -78,10 +78,10 @@
             </li>
             <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
               <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                <img class="img-xs rounded-circle" src="{{asset("assets/images/faces/face8.jpg")}}" alt="Profile image"> </a>
+                <img class="img-xs rounded-circle" src="{{asset("public/assets/images/faces/face8.jpg")}}" alt="Profile image"> </a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                 <div class="dropdown-header text-center">
-                  <img class="img-md rounded-circle" src="{{asset("assets/images/faces/face8.jpg")}}" alt="Profile image">
+                  <img class="img-md rounded-circle" src="{{asset("public/assets/images/faces/face8.jpg")}}" alt="Profile image">
                   <p class="mb-1 mt-3 font-weight-semibold">Allen Moreno</p>
                   <p class="font-weight-light text-muted mb-0">allenmoreno@gmail.com</p>
                 </div>
@@ -185,14 +185,14 @@
       </div>
       <!-- page-body-wrapper ends -->
     </div>
-    <script src="{{ asset('assets/vendors/js/vendor.bundle.base.js') }}"></script>
-    <script src="{{ asset("assets/vendors/js/vendor.bundle.addons.js") }}"></script>
+    <script src="{{ asset('public/assets/vendors/js/vendor.bundle.base.js') }}"></script>
+    <script src="{{ asset("public/assets/vendors/js/vendor.bundle.addons.js") }}"></script>
     <!-- container-scroller -->
     <!-- plugins:js -->
     {{-- <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script> --}}
-    <script src="{{asset("assets/vendors/js/vendor.bundle.base.js")}}"></script>
+    <script src="{{asset("public/assets/vendors/js/vendor.bundle.base.js")}}"></script>
     <!-- inject:js -->
-    <script src="{{asset("assets/js/shared/off-canvas.js")}}"></script>
+    <script src="{{asset("public/assets/js/shared/off-canvas.js")}}"></script>
     <!-- endinject -->
     @stack('jsTambahan')
   </body>

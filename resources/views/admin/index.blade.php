@@ -6,18 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Admin Login</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="{{ asset('assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendors/iconfonts/ionicons/dist/css/ionicons.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendors/css/vendor.bundle.base.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendors/css/vendor.bundle.addons.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/assets/vendors/iconfonts/ionicons/dist/css/ionicons.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/assets/vendors/css/vendor.bundle.base.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/assets/vendors/css/vendor.bundle.addons.css') }}">
     <!-- endinject -->
     <!-- plugin css for this page -->
     <!-- End plugin css for this page -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/shared/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/assets/css/shared/style.css') }}">
     <!-- endinject -->
-    <link rel="shortcut icon" href="{{asset("lending_page/assets/img/Logo-Karang-Taruna-300x293.png")}}" />
+    <link rel="shortcut icon" href="{{asset("public/lending_page/assets/img/Logo-Karang-Taruna-300x293.png")}}" />
   </head>
   <body>
     <div class="container-scroller">
@@ -28,7 +28,7 @@
               	<br>
             	<div class="row">
 	              	<div class="col-lg-6 text-center">
-	              		<img src="{{ asset('Logokartar.png') }}" width="45%">
+	              		<img src="{{ asset('public/Logokartar.png') }}" width="45%">
 	              		<h1>Login Admin Web Karangtaruna Desa Maguwoharjo</h1>
 	              	</div>
 	              	<div class="col-lg-1"></div>
@@ -99,16 +99,16 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="{{ asset('assets/vendors/js/vendor.bundle.base.js') }}"></script>
+    <script src="{{ asset('public/assets/vendors/js/vendor.bundle.base.js') }}"></script>
     {{-- <script src="{{ asset('assets/vendors/js/vendor.bundle.addons.js') }}"></script> --}}
     <!-- endinject -->
     <!-- inject:js -->
     {{-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> --}}
     <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
-    <script src="{{ asset('assets/js/shared/off-canvas.js') }}"></script>
+    <script src="{{ asset('public/assets/js/shared/off-canvas.js') }}"></script>
     {{-- <script src="{{ asset('assets/js/shared/misc.js') }}"></script> --}}
     <!-- endinject -->
-    <script src="{{ asset('assets/js/shared/jquery.cookie.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/assets/js/shared/jquery.cookie.js') }}" type="text/javascript"></script>
     <script type="text/javascript">
     	$('.alert').alert()
     </script>

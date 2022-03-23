@@ -14,14 +14,15 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $statis    = Statis::latest()->first();
+        $statis    = Statis::select('*')->first();
         $produks   = Produk::select('*')->limit(4)->get();
         $galeris   = Galeri::select('*')->limit(6)->get();
         $kegiatan1 = Kegiatan::select('*')->take(2)->first();
         $kegiatan2 = Kegiatan::select('*')->take(2)->latest()->first();
 
-        // dd($kegiatans->judul);
+        // dd($statis);
         return view('index', compact('statis', 'produks', 'galeris', 'kegiatan1', 'kegiatan2'));
+
     }
 
     public function produk()
